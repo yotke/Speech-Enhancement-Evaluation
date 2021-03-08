@@ -1,0 +1,12 @@
+#!/bin/bash
+
+#cd "$(dirname -- "$(pwd)")"/..
+mkdir $(pwd)/clean_original_txt_file
+
+for file in $(ls $1)
+do
+	echo $file
+	#echo $(pwd)
+	echo $(cat $1/$file |tr -d '[:punct:]' |tr '[:upper:]' '[:lower:]')" " > $(pwd)/clean_original_txt_file/$file
+done
+

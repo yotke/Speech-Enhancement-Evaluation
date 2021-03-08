@@ -1,0 +1,16 @@
+#!/bin/bash
+
+#make directories for files :
+mkdir -p tmp
+mkdir -p tmp/babble
+mkdir -p tmp/babble/clean_signal
+mkdir -p tmp/babble/processed_noised_signal
+mkdir -p tmp/babble/noised_signal
+
+
+mkdir -p tmp
+mkdir -p tmp/white
+mkdir -p tmp/white/clean_signal
+mkdir -p tmp/white/processed_noised_signal
+mkdir -p tmp/white/noised_signal
+

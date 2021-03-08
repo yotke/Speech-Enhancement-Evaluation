@@ -1,0 +1,29 @@
+#!/bin/bash
+noise_kind=$4
+
+mkdir -p ~+/$noise_kind/diff
+mkdir -p ~+/$noise_kind/diff/$3/different_words
+mkdir -p ~+/$noise_kind/diff/$3/number_of_errors
+
+
+number_of_diffrenet_lines() { diff <(sed "s/ /\n/g" $1|sed '/^[[:space:]]*$/d') <(sed "s/ /\n/g" $2|sed '/^[[:space:]]*$/d') |  grep "^>" | wc -l; }
+words_of_diffrenet_lines() { diff <(sed "s/ /\n/g" $1|sed '/^[[:space:]]*$/d') <(sed "s/ /\n/g" $2|sed '/^[[:space:]]*$/d') |  grep "^>" ;}
+
+
+path_IN=$1
+echo $path_IN
+path_org=$2
+echo $path_org
+path_OUT=~+/$noise_kind/diff
+#path_OUT=~+/$
+
+
+end=.txt
+for file_name in $(ls $path_IN)
+do
+	echo $file_name
+	original_name=$(echo $file_name| cut -d'.' -f 1).original.txt
+	 number_of_diffrenet_lines $path_IN/$file_name $path_org/$original_name  > $path_OUT/$3/number_of_errors/num_diff_$file_name
+	words_of_diffrenet_lines $path_IN/$file_name $path_org/$original_name > $path_OUT/$3/different_words/$file_name
+done
+

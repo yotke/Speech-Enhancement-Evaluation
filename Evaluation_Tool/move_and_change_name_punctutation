@@ -1,0 +1,19 @@
+#!/bin/bash
+
+
+
+
+move_files(){
+	cp $(pwd)/Evaluation_Tool/run_LibriSpeech_remove_punctuation_babble.py $(pwd)/Evaluation_Tool/Remove_punctuation $(pwd)/tmp/babble/
+	cp $(pwd)/Evaluation_Tool/run_LibriSpeech_remove_punctuation_white.py $(pwd)/Evaluation_Tool/Remove_punctuation $(pwd)/tmp/white/
+
+}
+change_name(){
+	mv $(pwd)/tmp/babble/run_LibriSpeech_remove_punctuation_babble.py $(pwd)/tmp/babble/run_LibriSpeech_remove_punctuation.py
+	mv $(pwd)/tmp/white/run_LibriSpeech_remove_punctuation_white.py $(pwd)/tmp/white/run_LibriSpeech_remove_punctuation.py
+}
+
+move_files
+change_name
+
+
