@@ -53,7 +53,7 @@ def Run_cost_function():
 preparation_for_run()
 
 
-#Run_Speech_Recognition()
+Run_Speech_Recognition()
 
 #sys.stdout.flush()
 
