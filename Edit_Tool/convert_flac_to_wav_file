@@ -1,0 +1,24 @@
+#!/bin/bash
+
+mkdir $(pwd)/all_wav_files
+$flac_directory=$1
+path_in=$(pwd)
+
+convert_file_to_wav_file(){ #convert one file to a wav file
+ffmpeg -i $1.flac $2.wav
+}
+
+convert_all_files_to_wav_files(){ #convet all the file recursivly in a folder and all the subfolders
+for file_name in $(ls $1);do
+	if [[ $file_name == *.flac ]]; then
+		only_name=$(echo $file_name|cut -d'.' -f1)
+		convert_file_to_wav $only_name
+	fi
+	if [[ -d $file_name ]]; then
+		cd $file_name
+		convert_all_files_to_wav_files $file_name
+		cd ..
+	fi
+done
+}
+convert_all_files_to_wav_files $flac_directory
