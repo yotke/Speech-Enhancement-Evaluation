@@ -1,10 +1,12 @@
 #!/bin/bash
 
-mkdir -p /home/yotam/softwares/project/LibriTTS/$3
-mkdir -p /home/yotam/softwares/project/LibriTTS/$3/my_output
+cur_dir=$4
+echo $cur_dir
+mkdir -p $cur_dir/$3
+mkdir -p $cur_dir/$3/my_output
 
 
-#eval_path_IN=/home/yotam/softwares/project/LibriTTS/all_wav_files
+#eval_path_IN=/home/yotsam/softwares/project/LibriTTS/all_wav_files
 #eval_path_OUT=/home/yotam/softwares/project/TIMIT-Wav/TIMIT-Wav/TEST/DR1/FAKS0/my_output
 #path=/home/yotam/softwares/TIMIT-Wav/TIMIT-Wav/TEST/DR1/FAKS0/my_output
 

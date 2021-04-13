@@ -11,14 +11,15 @@ import threading
 
 # Run DTLN on noised LibriSpeech dataset witch include more then 100000 hours of audio
 
-
+cwd = os.getcwd()
 
 
 def Run_DTLN_Func(noise_kind):
-   input1 = "/home/yotam/softwares/project/matlab/noised/"+noise_kind+"_noise "
-   input2 = "/home/yotam/softwares/project/LibriTTS/"+noise_kind+"/my_output "
+   input1 = cwd+"/noised/"+noise_kind+"_noise "
+   input2 = cwd+"/"+noise_kind+"/my_output "
    print(input1)
-   subprocess.run(["/home/yotam/softwares/project/LibriTTS/runDTLN "+input1 +input2 +noise_kind],stdout=subprocess.PIPE, shell=True)
+   print(cwd+"/runDTLN "+input1 +input2 +noise_kind +cwd)
+   subprocess.run([cwd+"/runDTLN "+input1 +input2 +noise_kind +" "+cwd],stdout=subprocess.PIPE, shell=True)
 
 
 #subprocess.run(["/home/yotam/softwares/project/LibriTTS/runDTLN /home/yotam/softwares/project/matlab/noised/white_noise /home/yotam/softwares/project/LibriTTS/white/my_output white"],stdout=subprocess.PIPE, shell=True)
