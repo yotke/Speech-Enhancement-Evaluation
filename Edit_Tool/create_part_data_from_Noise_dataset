@@ -1,0 +1,44 @@
+#!/bin/bash
+
+
+# This script get a directory from the user,
+# create new directory and move all wav files to the new directory.
+
+
+mkdir -p $(pwd)/noised # make a clean directory.
+mkdir -p $(pwd)/noised/babble_noise # make a clean directory.
+mkdir -p $(pwd)/noised/white_noise # make a clean directory.
+mkdir -p $(pwd)/part_wav_files # make a clean directory.
+mkdir -p $(pwd)/part_clean_original_txt_file # make a clean directory.
+main_directory=$(pwd)
+#main_directory=$(cd "$(dirname -- "$(pwd)")"/..)
+
+
+
+#for i in {1..$1};do
+#	new_file_name=$( echo $file_name|cut -d'.' -f 1) 
+#		mv -n $file_name $new_file_name
+
+kind="$3"
+
+create_part_data_from_Noise_dataset(){ # from the main directory to the last directory, move all wav files 
+i=0
+for file_name in $(ls $1);do
+	if [[ $file_name == *.wav ]];then  #move a wav file to all_wav_file directory.
+		cp  $1/$file_name "$main_directory/noised/"$kind"_noise"
+	fi
+	if [[ $file_name == *.wav ]]; then
+		new_file_name=$( echo $file_name|cut -d'.' -f 1) 
+		cp clean_original_txt_file/$new_file_name.original.txt part_clean_original_txt_file/$new_file_name.original.txt
+	fi
+	if [[ $file_name == *.wav ]];then  #move a wav file to all_wav_file directory.
+		cp  "all_wav_files/$file_name" "$main_directory/part_wav_files"
+	fi
+	let "i=i+1"
+	if (( i == $2 ));then
+		break;
+	fi
+done
+}
+create_part_data_from_Noise_dataset $1 $2
+

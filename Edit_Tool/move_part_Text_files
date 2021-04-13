@@ -1,0 +1,33 @@
+#!/bin/bash
+
+
+# This script get a directory from the user,
+# create new directory and move all wav files to the new directory.
+
+
+mkdir -p $(pwd)/part_clean_original_txt_file # make a clean directory.
+main_directory=$(pwd)
+#main_directory=$(cd "$(dirname -- "$(pwd)")"/..)
+
+
+
+#for i in {1..$1};do
+#	new_file_name=$( echo $file_name|cut -d'.' -f 1) 
+#		mv -n $file_name $new_file_name
+
+
+move_part_wav_files(){ # from the main directory to the last directory, move all wav files 
+i=0
+for file_name in $(ls $1);do
+	if [[ $file_name == *.wav ]]; then
+		new_file_name=$( echo $file_name|cut -d'.' -f 1) 
+		cp clean_original_txt_file/$new_file_name.original.txt part_clean_original_txt_file/$new_file_name.original.txt
+	fi
+	#if [[ $file_name == *.wav ]];then  #move a wav file to all_wav_file directory.
+	#	cp  $1/$file_name "$main_directory/part_wav_files"
+	#fi
+
+done
+}
+move_part_wav_files $1 $2
+

@@ -13,16 +13,19 @@ cwd = os.getcwd()
 print(cwd)
 if(len(sys.argv)>1):
 	print(len(sys.argv))
-	input=sys.argv[1];
+	directory_name=sys.argv[1];
+if(len(sys.argv)>2):
+	print(len(sys.argv))
+	input=sys.argv[2];
 else:
 	input=''
 def convert_flac_to_wav_files():
 	os.system("echo Convert flac files to wav files:")
-	subprocess.run(["$(pwd)/Edit_Tool/convert_flac_to_wav_file $(pwd)/test-clean"],stdout=subprocess.PIPE, shell=True)
+	subprocess.run(["$(pwd)/Edit_Tool/convert_flac_to_wav_file "+directory_name],stdout=subprocess.PIPE, shell=True)
 
 def Move_all_wav_files():
 	os.system("echo Move all wav files to one directory:")
-	subprocess.run(["$(pwd)/Edit_Tool/move_all_wav_files $(pwd)/test-clean"],stdout=subprocess.PIPE, shell=True)
+	subprocess.run(["$(pwd)/Edit_Tool/move_all_wav_files "+directory_name],stdout=subprocess.PIPE, shell=True)
 
 
 
