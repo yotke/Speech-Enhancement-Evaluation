@@ -21,7 +21,7 @@ def main_speech_recognition():
     file_name = input+".wav"
     pwd=os.getcwd()
     clean_AUDIO_FILE = path.join(path.dirname(pwd+'/all_wav_files/'), file_name)
-    noisy_AUDIO_FILE = path.join(path.dirname('/home/yotam/softwares/project/matlab/noised/white_noise/'), file_name)
+    noisy_AUDIO_FILE = path.join(path.dirname(pwd+'/noised/white_noise/'), file_name)
     DTLN_processed_AUDIO_FILE = path.join(path.dirname(pwd+'/white/my_output/'), file_name)
 
     clean_output_file = path.join(path.dirname(pwd+'/tmp/white/clean_signal/'), input)

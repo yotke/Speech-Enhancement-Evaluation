@@ -23,7 +23,7 @@ def main_speech_recognition():
     file_name = input+".wav"
     pwd=os.getcwd()
     clean_AUDIO_FILE = path.join(path.dirname(pwd+'/all_wav_files/'), file_name)
-    noisy_AUDIO_FILE = path.join(path.dirname('/home/yotam/softwares/project/matlab/noised/babble_noise/'), file_name)
+    noisy_AUDIO_FILE = path.join(path.dirname(pwd+'/noised/babble_noise/'), file_name)
     DTLN_processed_AUDIO_FILE = path.join(path.dirname(pwd+'/babble/my_output/'), file_name)
 
     clean_output_file = path.join(path.dirname(pwd+'/tmp/babble/clean_signal/'), input)
