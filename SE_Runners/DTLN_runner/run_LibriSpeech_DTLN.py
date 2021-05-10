@@ -6,11 +6,11 @@ import subprocess
 import signal
 import time
 import threading
-
+import sys
 #current_dir=$(pwd)
 
 # Run DTLN on noised LibriSpeech dataset witch include more then 100000 hours of audio
-
+kind=sys.argv[1]
 cwd = os.getcwd()
 
 
@@ -26,7 +26,7 @@ def Run_DTLN_Func(noise_kind):
 def main_f():
     os.chdir('/home/yotam/PycharmProjects/DTLN-master')
 
-    t1 = threading.Thread(target=Run_DTLN_Func, args=("babble",))
+    t1 = threading.Thread(target=Run_DTLN_Func, args=(kind,))
     t2 = threading.Thread(target=Run_DTLN_Func, args=("white",))
 
     t1.start()
