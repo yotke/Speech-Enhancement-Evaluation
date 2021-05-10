@@ -1,0 +1,43 @@
+#!/bin/bash
+
+noiseKind=$1
+dir_name="$(pwd)/part_wav_files"
+echo $dir_name
+
+mkdir spectrum_images
+cur_dir="$(pwd)"
+#chmod 777 DrawSignal.m
+
+
+generate_graph_file(){ matlab -nodisplay -nodesktop -r "find_spectrum('$1','$2') ; quit" 
+}
+
+create_random_number(){
+
+ num=$(ls $1| wc -l);
+ #echo $num
+ chosen_number=$((1 + $RANDOM % $num));
+ echo $chosen_number
+}
+
+genarate_random_file_number(){
+
+ chosen_number=$( create_random_number $1)
+ i=0; 
+ for file in $(ls $dir_name);do
+ 	if (( $i == $chosen_number ));then
+ 		generate_graph_file $file $2	
+ 		feh -. "spectrum_images/"$file"_"$2".png"
+ 		break;
+ 	fi
+ 	(( i = i+1 ))
+ done
+}
+
+genarate_random_file_number $dir_name $noiseKind
+
+
+
+
+
+cd $cur_dir

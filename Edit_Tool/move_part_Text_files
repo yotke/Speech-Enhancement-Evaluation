@@ -1,5 +1,6 @@
 #!/bin/bash
 
+rm -r part_clean_original_txt_file/*.txt
 
 # This script get a directory from the user,
 # create new directory and move all wav files to the new directory.

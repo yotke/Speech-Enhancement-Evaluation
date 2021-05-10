@@ -10,15 +10,31 @@ main_directory=$(pwd)
 #main_directory=$(cd "$(dirname -- "$(pwd)")"/..)
 
 
+rm -r part_wav_files/*.wav
 
-#for i in {1..$1};do
-#	new_file_name=$( echo $file_name|cut -d'.' -f 1) 
-#		mv -n $file_name $new_file_name
+create_random_number(){
 
+ num=$(ls $1| wc -l);
+ chosen_number=$((1 + $RANDOM % (( $num - $2 )) ));
+ echo $chosen_number
+}
 
+random="$3"
 move_part_wav_files(){ # from the main directory to the last directory, move all wav files 
+
 i=0
+counter=0
+chosen_number=$( create_random_number $1 $2)
 for file_name in $(ls $1);do
+	# Added  random choise
+	if [[ $random == "random" ]] ;then
+ 		if [[ $chosen_number -gt $counter ]] ;then
+   			counter=$(( $counter + 1 ))
+		fi
+		if [[ $chosen_number -gt $counter ]] ;then
+			continue;
+		fi
+	fi
 	if [[ $file_name == *.wav ]];then  #move a wav file to all_wav_file directory.
 		cp  $1/$file_name "$main_directory/part_wav_files"
 	fi

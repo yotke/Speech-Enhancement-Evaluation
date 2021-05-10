@@ -1,0 +1,2 @@
+spectogram
+s = spectrogram(x) 

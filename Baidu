@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# This script will help us run  Baidu algorithm on multiple files.
+
+
+cwd=$PWD
+cd ~/PycharmProjects/baidu
+virtualenv -p python3 $HOME/tmp/deepspeech-gpu-venv/
+source $HOME/tmp/deepspeech-gpu-venv/bin/activate
+
+input=$1
+output=$2
+
+deepspeech --model deepspeech-0.9.1-models.pbmm --scorer deepspeech-0.9.1-models.scorer --audio $1 >$2.txt
+	 
+cd $cwd
+#kompare 

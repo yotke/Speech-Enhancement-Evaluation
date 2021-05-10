@@ -1,19 +1,20 @@
 #!/bin/bash
 
 
-
+kind=$1
 
 move_files(){
-	cp $(pwd)/Evaluation_Tool/run_LibriSpeech_remove_punctuation_babble.py $(pwd)/Evaluation_Tool/Remove_punctuation $(pwd)/tmp/babble/
-	cp $(pwd)/Evaluation_Tool/run_LibriSpeech_remove_punctuation_white.py $(pwd)/Evaluation_Tool/Remove_punctuation $(pwd)/tmp/white/
+	cp $(pwd)/Evaluation_Tool/run_LibriSpeech_remove_punctuation.py $(pwd)/Evaluation_Tool/Remove_punctuation $(pwd)/tmp/$kind/
+
 
 }
-change_name(){
-	mv $(pwd)/tmp/babble/run_LibriSpeech_remove_punctuation_babble.py $(pwd)/tmp/babble/run_LibriSpeech_remove_punctuation.py
-	mv $(pwd)/tmp/white/run_LibriSpeech_remove_punctuation_white.py $(pwd)/tmp/white/run_LibriSpeech_remove_punctuation.py
-}
 
-move_files
-change_name
+#change_name(){
+#	mv $(pwd)/tmp/$kind/run_LibriSpeech_remove_punctuation.py $(pwd)/tmp/$kind/run_LibriSpeech_remove_punctuation.py
+
+#}
+
+move_files $1
+#change_name $1
 
 

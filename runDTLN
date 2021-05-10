@@ -1,0 +1,17 @@
+#!/bin/bash
+
+cur_dir=$4
+echo $cur_dir
+mkdir -p $cur_dir/$3
+mkdir -p $cur_dir/$3/my_output
+
+
+#eval_path_IN=/home/yotsam/softwares/project/LibriTTS/all_wav_files
+#eval_path_OUT=/home/yotam/softwares/project/TIMIT-Wav/TIMIT-Wav/TEST/DR1/FAKS0/my_output
+#path=/home/yotam/softwares/TIMIT-Wav/TIMIT-Wav/TEST/DR1/FAKS0/my_output
+
+source ~/anaconda3/etc/profile.d/conda.sh
+conda activate eval_env
+
+cd /home/yotam/PycharmProjects/DTLN-master
+ python run_evaluation.py -i $1 -o $2 -m ./pretrained_model/model.h5
